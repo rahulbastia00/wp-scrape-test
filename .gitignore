@@ -4,3 +4,8 @@ data/
 media/
 *.json
 .git
+
+venv/
+__pycache__/
+data/*
+!data/qr_code.png
