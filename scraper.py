@@ -360,8 +360,8 @@ async def main(phone_number, profile_path="data/whatsapp_profile", output=None):
                 log.warning("Login required. Taking screenshot...")
                 for i in range(5):  # Try taking 5 screenshots, 20 seconds apart
                     await asyncio.sleep(5) # Wait for QR to actually generate
-                    await page.screenshot(path="media/qr/qr_code.png")
-                    log.info(f"QR Code updated (Attempt {i+1}/5). Scan media/qr/qr_code.png' now.")
+                    await page.screenshot(path="data/qr_code.png")
+                    log.info(f"QR Code updated (Attempt {i+1}/5). Scan data/qr_code.png' now.")
                     
                     try:
                         # Check if we logged in after scanning
@@ -385,7 +385,7 @@ async def main(phone_number, profile_path="data/whatsapp_profile", output=None):
                     except:
                         continue
 
-                await page.screenshot(path="media/qr/qr_code.png", full_page=True)
+                await page.screenshot(path="data/qr_code.png", full_page=True)
                 log.info("Scan the QR code above, waiting up to 2 minutes...")
                 await page.wait_for_selector("#side", timeout=120000)
                 log.info("Logged in successfully.")
@@ -556,7 +556,7 @@ async def main(phone_number, profile_path="data/whatsapp_profile", output=None):
             log.error("Error: %s", e)
             import traceback; traceback.print_exc()
             try:
-                await page.screenshot(path="/media/error_debug.png")
+                await page.screenshot(path="data/qr_code.png")
             except:
                 pass
             return None

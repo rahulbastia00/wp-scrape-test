@@ -475,7 +475,7 @@ async def login(page):
         for i in range(15):
             try:
                 await page.wait_for_selector("canvas, [data-testid='qrcode']", timeout=10000)
-                await page.screenshot(path="media/qr/qr_code_sender.png") # Relative path
+                await page.screenshot(path="data/qr_code_sender.png") # Relative path
                 log.info(f"QR Code updated (Attempt {i+1}/15). Scan 'media/qr/qr_code_sender.png'")
 
                 await page.wait_for_selector("#side", timeout=20000)
@@ -671,7 +671,7 @@ async def scrape(phone_number, profile_path="data/whatsapp_profile", output=None
             log.error("Error: %s", e)
             import traceback; traceback.print_exc()
             try:
-                await page.screenshot(path="/content/error_debug.png")
+                await page.screenshot(path="data/error_debug.png")
                 display(Image("/content/error_debug.png"))
             except:
                 pass
@@ -705,8 +705,8 @@ async def broadcast(numbers, message, profile_path="data/whatsapp_profile"):
             log.error("Broadcast error: %s", e)
             import traceback; traceback.print_exc()
             try:
-                await page.screenshot(path="/content/error_debug.png")
-                display(Image("/content/error_debug.png"))
+                await page.screenshot(path="data/error_debug.png")
+                display(Image("data/error_debug.png"))
             except:
                 pass
             return None
